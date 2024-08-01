@@ -9,7 +9,7 @@ on:
         type: string
       image_name:
         description: 'Docker image name'
-        default: "${{ github.event.repository.name }}"
+        required: true
         type: string
       tag:
         description: 'Release tag version'
@@ -33,7 +33,7 @@ on:
         type: string
       image_name:
         description: 'Docker image name'
-        default: "${{ github.event.repository.name }}"
+        required: true
         type: string
       tag:
         description: 'Release tag version'
