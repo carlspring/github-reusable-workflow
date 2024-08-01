@@ -65,4 +65,4 @@ jobs:
 
       - name: Show inputs
         run:
-          echo "${{ fromJSON(inputs) }}" | jq
+          echo "${{ toJSON(inputs) }}" | jq
