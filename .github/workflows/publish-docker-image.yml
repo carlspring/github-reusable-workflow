@@ -9,7 +9,31 @@ on:
         type: string
       image_name:
         description: 'Docker image name'
-        default: ${{ github.event.repository.name }}
+        default: "${{ github.event.repository.name }}"
+        type: string
+      tag:
+        description: 'Release tag version'
+        required: true
+        type: string
+      tag_latest:
+        description: 'Tag as latest version?'
+        default: true
+        required: false
+        type: boolean
+      tag_minimal:
+        default: ""
+        description: 'Minimal supported tag version'
+        required: false
+        type: string
+  workflow_dispatch:
+    inputs:
+      registry:
+        description: 'Image registry'
+        default: dockerhub.com
+        type: string
+      image_name:
+        description: 'Docker image name'
+        default: "${{ github.event.repository.name }}"
         type: string
       tag:
         description: 'Release tag version'
@@ -38,3 +62,7 @@ jobs:
     steps:
       - name: Test
         run: echo "Testing..."
+
+      - name: Show inputs
+        run:
+          echo "${{ fromJson(inputs) }}" | jq
